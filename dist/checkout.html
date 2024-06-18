@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -55,18 +56,20 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
               <li class="nav-item">
-                <a class="nav-link" href="index">Home </a>
+                <a class="nav-link" href="dashboard">Home </a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="menu">Menu <span class="sr-only">(current)</span> </a>
+                <a class="nav-link" href="products">Menu <span class="sr-only">(current)</span> </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="about">About</a>
               </li>
             </ul>
             <div class="user_option">
-
-              <a class="cart_link" href="#">
+         <!--      <a href="" class="user_link">
+                <i class="fa fa-user" aria-hidden="true"></i>
+              </a> -->
+              <!-- <a class="cart_link" href="#">
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                   <g>
                     <g>
@@ -120,9 +123,26 @@
                   </g>
                 </svg>
               </a>
+           
               <form class="form-inline">
                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                   <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </form> -->
+              <a href="cart" >
+                <div class="wrapper">
+              <i class="fa" style="font-size:24px">&#xf07a;</i>
+              <span id="cartitemnumber"></span>
+            </div></a>
+             
+             
+              <form class="form-inline">
+                <span  id="myinput"  type="text" value="">
+                  <input  class ="showNotes form-control"  type="text"   id="asd" placeholder="Enter item to search"/> 
+                </span>
+                <button class="btn  my-2 my-sm-0 nav_search-btn " type="submit" id="clickq">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                  
                 </button>
               </form>
               <a href="" class="order_online">
@@ -138,119 +158,110 @@
 
   <!-- food section -->
 
- 
+  <section class="food_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Checkout
+        </h2>
+      </div>
+
+      <!-- <iframe src="https://www.formstack.com/forms/newname-untitled_contact_form20" title="MyForm" width="600" height="400" scrolling="“no”" frameborder="“0”"></iframe> -->
 
 
 
+       <!-- Checkout -->
+    <section class="my-2 py-3 checkout">
+      <div class="mx-auto container">
 
- 
-  <section class="cart container mt-2 my-3 py-5">
-    <div class="container mt-2">
-      <h4>Your Cart</h4>
-    </div>
+      <form id="checkout-form" method="post" action="/place_order">
 
-    <table class="pt-5" style="width: 100%">
-      <tr>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th>Subtotal</th>
-      </tr>
-
-
-      
-      <% cart.forEach(function(item) { %>
-     
-          <tr>
-            <td>
-              <div class="product-info">
-                <img style="width:50px; height:50px"  src="images/<%= item.image %>">
-                <div>
-                  <p><%= item.name %></p>
-
-                  <% if(item.sale_price){ %>
-                    <small><span>$</span><%= item.sale_price %></small>
-                 <% } else { %>   
-                  <small><span>$</span><%= item.price %></small>
-                  <% } %>
-                  <br>
-
-
-                  <form method="post" action="/remove_product"> 
-                    
-                        <input type="hidden" name="id" value="<%= item.id %>">
-                        <input type="submit" name="remove_btn" class="remove-btn" value="remove">
-                  </form>
+                  <p style="font-weight: bold;font-style:italic">Billing details</p>
+                <div class="form-group checkout-small-element">
+                    <label for="">Name</label>
+                    <input type="text" class="form-control" id="checkout-name" name="name" placeholder="name" required>
                 </div>
+
+                <div class="form-group checkout-small-element">
+                    <label for="">Email</label>
+                    <input type="email" class="form-control" id="checkout-email" name="email" placeholder="email address" required>
+                </div>
+
+                <div class="form-group checkout-small-element">
+                    <label for="">Phone</label>
+                    <input type="tel" class="form-control" id="checkout-phone" name="phone" placeholder="phone number" required>
+                </div>
+                <div class="form-group checkout-small-element">
+                  <label for="">City</label>
+                  <input type="text" class="form-control" id="checkout-city" name="city" placeholder="city" required>
               </div>
-            </td>
+                <div class="form-group checkout-large-small">
+                  <label for="">Address</label>
+                  <input type="text" class="form-control" id="checkout-address" name="address" placeholder="address" required>
+              </div>
+              <div class="form-group checkout-large-small">
 
-            <td>
-              <form method="post" action="/edit_product_quantity">
-              
-                <input type="hidden" value="<%= item.id %>" name="id">
-                <input type="submit" value="-" class="edit-btn" name="decrease_product_quantity">
-                <input type="text" name="quantity" value="<%= item.quantity %>" readonly>
-                <input type="submit" value="+" class="edit-btn" name="increase_product_quantity">
-              </form>
+                  <input type="checkbox" name="checkbox1"  id='check'> 
+                  <!-- onclick="myFunction2()"> -->
+                  <label for="checkbox1"> Shipping details sames as Billing details</label><br>
+              </div>
+                
+                <!-- <script>
+                 if( document.getElementById("ddf").checked == 'false'){
 
-              
-            </td>
+                 }
+              </script> -->
+<!-- </div>
+<div class="mx-auto container"> -->
 
-            <td>
+            <div class="form-group checkout-large-element showNotes" id="checkout-form2" >
 
-                <% if(item.sale_price){ %>
-                   <span class="product-price">$ <%= item.sale_price * item.quantity %></span>
-                <% } else { %> 
-                    <span class="product-price">$ <%= item.price * item.quantity %></span>
-                <% } %>    
-              
-            </td>
-          </tr>
-     
-          <% }) %> 
-        
-    </table>
+                  <p style="  margin-top: 30px; font-weight: bold;font-style:italic">Shipping details</p>
+                <div class="form-group checkout-small-element">
+                    <label for="">Name</label>
+                    <input type="text" class="form-control" id="checkout-name1" name="shipname" placeholder="name" >
+                </div>
+
+                <div class="form-group checkout-small-element">
+                    <label for="">Email</label>
+                    <input type="email" class="form-control" id="checkout-email1" name="shipemail" placeholder="email address" >
+                </div>
+
+                <div class="form-group checkout-small-element">
+                    <label for="">Phone</label>
+                    <input type="tel" class="form-control" id="checkout-phone1" name="shipphone" placeholder="phone number" >
+                </div>
+                <div class="form-group checkout-small-element">
+                  <label for="">City</label>
+                  <input type="text" class="form-control" id="checkout-city1" name="shipcity" placeholder="city" >
+                </div>
+                <div class="form-group checkout-large-small">
+                  <label for="">Address</label>
+                  <input type="text" class="form-control" id="checkout-address1" name="shipaddress" placeholder="address" >
+                </div>
+                
+
+                
+              </div>
+             
+
+                <div class="form-group checkout-btn-container">
+                    <p>Total amount: </p>
+                    <input type="submit" class="btn" id="checkout-btn" name="checkout_btn" value="Checkout">
+                </div>
+   
+            </form>
+        </div>
+
+    </section>
 
 
 
 
-    <div class="cart-total">
-      <table>
-        
-        <tr>
-          <td>Total</td>
-       
-            <td>$ <%= total %></td>
-          
-        </tr>
-        
-      </table>
+
+
     </div>
-    
-    
-
-    
-    <div class="checkout-container">
-
-      <form method="get" action="/checkout">
-        <input type="submit" class="btn checkout-btn" value="Checkout" name="">
-      </form>
- 
-    </div>
-
-
-
-
-
-
   </section>
-
-
-
-
-
-
-
 
   <!-- end food section -->
 
@@ -358,8 +369,8 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
   </script>
   <!-- End Google Map -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 </body>
 
 </html>
-

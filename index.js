@@ -4,7 +4,6 @@ var bodyParser = require("body-parser");
 var mysql = require("mysql");
 var session = require("express-session");
 const bcrypt = require("bcrypt");
-
 const users = require("./public/js/data").userDB;
 
 mysql.createConnection({

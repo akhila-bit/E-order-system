@@ -55,7 +55,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
               <li class="nav-item">
-                <a class="nav-link" href="index">Home </a>
+                <a class="nav-link" href="dashboard">Home </a>
               </li>
               <li class="nav-item active">
                 <a class="nav-link" href="menu">Menu <span class="sr-only">(current)</span> </a>
@@ -65,8 +65,10 @@
               </li>
             </ul>
             <div class="user_option">
-
-              <a class="cart_link" href="#">
+         <!--      <a href="" class="user_link">
+                <i class="fa fa-user" aria-hidden="true"></i>
+              </a> -->
+              <!-- <a class="cart_link" href="cart">
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                   <g>
                     <g>
@@ -119,7 +121,13 @@
                   <g>
                   </g>
                 </svg>
-              </a>
+              </a>  -->
+              <a href="" >
+                <div class="wrapper">
+              <i class="fa" style="font-size:24px">&#xf07a;</i>
+             
+             <span id="cartitemnumber">
+              </span> </div></a>
               <form class="form-inline">
                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                   <i class="fa fa-search" aria-hidden="true"></i>
@@ -155,60 +163,17 @@
         <th>Quantity</th>
         <th>Subtotal</th>
       </tr>
-
+   
 
       
-      <% cart.forEach(function(item) { %>
-     
-          <tr>
-            <td>
-              <div class="product-info">
-                <img style="width:50px; height:50px"  src="images/<%= item.image %>">
-                <div>
-                  <p><%= item.name %></p>
-
-                  <% if(item.sale_price){ %>
-                    <small><span>$</span><%= item.sale_price %></small>
-                 <% } else { %>   
-                  <small><span>$</span><%= item.price %></small>
-                  <% } %>
-                  <br>
-
-
-                  <form method="post" action="/remove_product"> 
-                    
-                        <input type="hidden" name="id" value="<%= item.id %>">
-                        <input type="submit" name="remove_btn" class="remove-btn" value="remove">
-                  </form>
-                </div>
-              </div>
-            </td>
-
-            <td>
-              <form method="post" action="/edit_product_quantity">
-              
-                <input type="hidden" value="<%= item.id %>" name="id">
-                <input type="submit" value="-" class="edit-btn" name="decrease_product_quantity">
-                <input type="text" name="quantity" value="<%= item.quantity %>" readonly>
-                <input type="submit" value="+" class="edit-btn" name="increase_product_quantity">
-              </form>
-
-              
-            </td>
-
-            <td>
-
-                <% if(item.sale_price){ %>
-                   <span class="product-price">$ <%= item.sale_price * item.quantity %></span>
-                <% } else { %> 
-                    <span class="product-price">$ <%= item.price * item.quantity %></span>
-                <% } %>    
-              
-            </td>
-          </tr>
-     
-          <% }) %> 
-        
+        <tr>
+          <td>
+            <div class="product-info">
+              <p>No items in cart</p>
+            </div>
+          </td>
+        </tr>
+      
     </table>
 
 
@@ -220,7 +185,7 @@
         <tr>
           <td>Total</td>
        
-            <td>$ <%= total %></td>
+            <td></td>
           
         </tr>
         
@@ -228,7 +193,7 @@
     </div>
     
     
-
+   
     
     <div class="checkout-container">
 
@@ -270,7 +235,7 @@
                 <span>
                   Location
                 </span>
-                <div id="googleMap" style="width:100%;height:300px;"></div>
+                <!-- <div id="googleMap" style="width:100%;height:300px;"></div> -->
 
               </a>
               <a href="">
@@ -324,10 +289,17 @@
             Everyday
           </p>
           <p>
-            10.00 Am -10.00 Pm
+            10.00 AM -10.00 PM
           </p>
         </div>
       </div>
+      <div class="row"> 
+        <div class="col-md-8 m-2">
+  
+            <div id="googleMap" style="width:100%;height:300px;"></div>
+            </div>
+        
+        </div>
       <div class="footer-info">
         <p>
           &copy; <span id="displayYear"></span> All Rights Reserved By
@@ -358,6 +330,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
   </script>
   <!-- End Google Map -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 </body>
 
